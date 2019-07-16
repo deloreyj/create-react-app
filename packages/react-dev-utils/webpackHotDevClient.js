@@ -58,11 +58,22 @@ if (module.hot && typeof module.hot.dispose === 'function') {
 }
 
 // Connect to WebpackDevServer via a socket.
+var protocol = window.location.protocol;
+var hostname = window.location.hostname;
+var port = window.location.port;
+
+if (window.mageLoadBaseUrl) {
+  var loadBaseUrl = new URL(window.mageLoadBaseUrl);
+  protocol = window.mageLoadBaseUrl.startsWith('https') ? 'https' : 'http';
+  hostname = loadBaseUrl.hostname;
+  port = loadBaseUrl.port;
+}
+
 var connection = new SockJS(
   url.format({
-    protocol: window.location.protocol,
-    hostname: window.location.hostname,
-    port: window.location.port,
+    protocol: protocol,
+    hostname: hostname,
+    port: port,
     // Hardcoded in WebpackDevServer
     pathname: '/sockjs-node',
   })
