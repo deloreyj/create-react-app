@@ -16,12 +16,10 @@ process.on('unhandledRejection', err => {
 
 const fs = require('fs-extra');
 const path = require('path');
-const chalk = require('@mage-catfish/react-dev-utils/chalk');
+const chalk = require('react-dev-utils/chalk');
 const execSync = require('child_process').execSync;
-const spawn = require('@mage-catfish/react-dev-utils/crossSpawn');
-const {
-  defaultBrowsers,
-} = require('@mage-catfish/react-dev-utils/browsersHelper');
+const spawn = require('react-dev-utils/crossSpawn');
+const { defaultBrowsers } = require('react-dev-utils/browsersHelper');
 const os = require('os');
 const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
 
@@ -103,10 +101,32 @@ module.exports = function(
     eject: 'react-scripts eject',
   };
 
+  /* BEGIN CATFISH CUSTOMIZATIONS */
+
   // Setup the eslint config
   appPackage.eslintConfig = {
-    extends: 'react-app',
+    extends: ['react-app', '@magento'],
   };
+
+  appPackage.scripts = {
+    ...appPackage.scripts,
+    'test:staged': 'cross-env CI=true npm run test -- -b --findRelatedTests',
+    lint: 'eslint .',
+    'lint:fix': 'npm run lint -- --fix',
+    format: 'npm run prettier -- --write',
+    prettier: 'prettier "**/*.+(js|json)"',
+    validate: 'npm run lint && npm run prettier -- --list-different',
+    'lint-staged': 'lint-staged',
+  };
+
+  appPackage.husky = {
+    hooks: {
+      'pre-commit': 'npm run lint-staged',
+      'pre-push': 'npm run validate',
+    },
+  };
+
+  /* END CATFISH CUSTOMIZATIONS */
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers;
