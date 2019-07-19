@@ -1,5 +1,9 @@
 # Create React App [![Build Status](https://dev.azure.com/facebook/create-react-app/_apis/build/status/facebook.create-react-app?branchName=master)](https://dev.azure.com/facebook/create-react-app/_build/latest?definitionId=1&branchName=master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/facebook/create-react-app/pulls)
 
+# This is a Magento fork of CRA [NPM link](https://www.npmjs.com/package/@mage-catfish/react-scripts)
+
+To use run `npx create-react-app [app name] --scripts-version @mage-catfish/react-scripts`
+
 Create React apps with no build configuration.
 
 - [Creating an App](#creating-an-app) – How to create a new app.
@@ -11,7 +15,7 @@ If something doesn’t work, please [file an issue](https://github.com/facebook/
 ## Quick Overview
 
 ```sh
-npx create-react-app my-app
+npx create-react-app [app name] --scripts-version @mage-catfish/react-scripts
 cd my-app
 npm start
 ```
@@ -35,32 +39,6 @@ Just create a project, and you’re good to go.
 ## Creating an App
 
 **You’ll need to have Node 8.16.0 or Node 10.16.0 or later version on your local development machine** (but it’s not required on the server). You can use [nvm](https://github.com/creationix/nvm#installation) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) to easily switch Node versions between different projects.
-
-To create a new app, you may choose one of the following methods:
-
-### npx
-
-```sh
-npx create-react-app my-app
-```
-
-_([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f))_
-
-### npm
-
-```sh
-npm init react-app my-app
-```
-
-_`npm init <initializer>` is available in npm 6+_
-
-### Yarn
-
-```sh
-yarn create react-app my-app
-```
-
-_`yarn create` is available in Yarn 0.25+_
 
 It will create a directory called `my-app` inside the current folder.<br>
 Inside that directory, it will generate the initial project structure and install the transitive dependencies:
