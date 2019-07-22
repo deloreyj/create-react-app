@@ -12,7 +12,7 @@ run `npx create-react-app [app name] --scripts-version @mage-catfish/react-scrip
 
 ## Purpose
 
-The purpose of this project is to provide a dev-ready starting point for modern react development at Magento without deviating too much from industry standards. This fork of r
+The purpose of this project is to provide a dev-ready starting point for modern react development at Magento without deviating too much from industry standards. This fork of Facebook's react-scripts.
 
 It includes support for [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/) with the webpack dev server from within a Magento instance
 
