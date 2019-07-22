@@ -17,6 +17,8 @@ It also includes certain development best practices such as,
 - Redux support with [Redux starter kit](https://redux-starter-kit.js.org/),
   [React redux](https://react-redux.js.org/), and
   [Redux thunk](https://github.com/reduxjs/redux-thunk)
+- Test helpers with
+  [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro)
 
 To use the dev server, simply run `npm start` and add `loader.js` to your template file in Magento
 like so
@@ -26,8 +28,6 @@ like so
 This setup attempts to be unopinionated and as such **does not include**
 
 - A css pre-processor
-- Test helpers like [Enzyme](https://github.com/airbnb/enzyme) or
-  [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro)
 - [React Spectrum](https://react-spectrum.corp.adobe.com/)
 
 ## Available Scripts
