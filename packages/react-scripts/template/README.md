@@ -14,8 +14,9 @@ It also includes certain development best practices such as,
 - Style guide enforcement with eslint and prettier
 - Git hooks to lint, test, and format staged changes pre-commit and pre-push
 - A number of helpful npm scripts to make development smooth
-- Redux support with [React starter kit](https://redux-starter-kit.js.org/) and
-  [React redux](https://react-redux.js.org/)
+- Redux support with [Redux starter kit](https://redux-starter-kit.js.org/),
+  [React redux](https://react-redux.js.org/), and
+  [Redux thunk](https://github.com/reduxjs/redux-thunk)
 
 To use the dev server, simply run `npm start` and add `loader.js` to your template file in Magento
 like so
