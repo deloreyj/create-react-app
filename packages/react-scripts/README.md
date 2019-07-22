@@ -12,25 +12,32 @@ run `npx create-react-app [app name] --scripts-version @mage-catfish/react-scrip
 
 ## Purpose
 
-The purpose of this project is to provide a dev-ready starting point for modern react development at Magento without deviating too much from industry standards. This fork of Facebook's react-scripts.
+The purpose of this project is to provide a dev-ready starting point for modern react development at
+Magento.
 
-It includes support for [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/) with the webpack dev server from within a Magento instance
+It includes support for
+[Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/) with the webpack
+dev server from within a Magento instance
 
-It also includes certain Magento frontend development best practices such as,
+It also includes certain development best practices such as,
 
 - Style guide enforcement with eslint and prettier
 - Git hooks to lint, test, and format staged changes pre-commit and pre-push
 - A number of helpful npm scripts to make development smooth
-- Redux support with [React starter kit](https://redux-starter-kit.js.org/) and [React redux](https://react-redux.js.org/)
+- Redux support with [Redux starter kit](https://redux-starter-kit.js.org/),
+  [React redux](https://react-redux.js.org/), and
+  [Redux thunk](https://github.com/reduxjs/redux-thunk)
+- Test helpers with
+  [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro)
 
-To use the dev server, simply run `npm start` and add `loader.js` to your template file in Magento like so
+To use the dev server, simply run `npm start` and add `loader.js` to your template file in Magento
+like so
 
 `<script src="http://localhost:3000/loader.js"></script>`
 
 This setup attempts to be unopinionated and as such **does not include**
 
 - A css pre-processor
-- Test helpers like [Enzyme](https://github.com/airbnb/enzyme) or [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro)
 - [React Spectrum](https://react-spectrum.corp.adobe.com/)
 
 ## What if I just want the dev server in my existing project?
