@@ -430,6 +430,9 @@ function run(
         const pnpPath = path.resolve(process.cwd(), '.pnp.js');
 
         const nodeArgs = fs.existsSync(pnpPath) ? ['--require', pnpPath] : [];
+        console.log(
+          `root: ${root} appName: ${appName} verbose: ${verbose} originalDirectory: ${originalDirectory} template: ${template}`
+        );
 
         await executeNodeScript(
           {
