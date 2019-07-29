@@ -75,6 +75,29 @@ function tryGitInit(appPath) {
   }
 }
 
+function objectifyDependencies(dependencies, packageFile) {
+  const retVal = {};
+  dependencies.forEach(dep => {
+    retVal[dep] = packageFile.dependencies[dep];
+  });
+  return retVal;
+}
+function copyPackageDependencies(packageFile) {
+  const dependencies = [
+    'react-redux',
+    'redux-starter-kit',
+    'redux-thunk',
+    'react-router-dom',
+    'react-loadable',
+  ];
+  return objectifyDependencies(dependencies, packageFile);
+}
+
+function copyPackageDevDependencies(packageFile) {
+  const devDependencies = ['@testing-library/react'];
+  return objectifyDependencies(devDependencies, packageFile);
+}
+
 module.exports = function(
   appPath,
   appName,
@@ -89,7 +112,6 @@ module.exports = function(
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
 
   // Copy over some of the devDependencies
-  console.log(appPackage);
   appPackage.dependencies = appPackage.dependencies || {};
 
   const useTypeScript = appPackage.dependencies['typescript'] != null;
@@ -103,6 +125,16 @@ module.exports = function(
   };
 
   /* BEGIN CATFISH CUSTOMIZATIONS */
+  const ownPackage = require(path.join(ownPath, 'package.json'));
+  // Copy over some dependencies from react-scripts to app package.json for code completion in editors
+  appPackage.dependencies = {
+    ...appPackage.dependencies,
+    ...copyPackageDependencies(ownPackage),
+  };
+  appPackage.devDependencies = {
+    ...appPackage.devDependencies,
+    ...copyPackageDevDependencies(ownPackage),
+  };
 
   // Setup the eslint config
   appPackage.eslintConfig = {
