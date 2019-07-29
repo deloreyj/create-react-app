@@ -143,6 +143,8 @@ module.exports = function(
 
   appPackage.scripts = {
     ...appPackage.scripts,
+    'test:e2e': 'npx cypress open',
+    'start:https': 'cross-env HTTPS=true npm start',
     'test:staged': 'cross-env CI=true npm run test -- -b --findRelatedTests',
     lint: 'eslint .',
     'lint:fix': 'npm run lint -- --fix',
