@@ -94,7 +94,10 @@ function copyPackageDependencies(packageFile) {
 }
 
 function copyPackageDevDependencies(packageFile) {
-  const devDependencies = ['@testing-library/react'];
+  const devDependencies = [
+    '@testing-library/react',
+    '@testing-library/jest-dom',
+  ];
   return objectifyDependencies(devDependencies, packageFile);
 }
 
