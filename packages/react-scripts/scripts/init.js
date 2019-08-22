@@ -146,6 +146,7 @@ module.exports = function(
 
   appPackage.scripts = {
     ...appPackage.scripts,
+    build: 'react-scripts build && node createUsefulAssetManifest.js',
     'test:e2e': 'npx cypress open',
     'start:https': 'cross-env HTTPS=true npm start',
     'test:staged': 'cross-env CI=true npm run test -- -b --findRelatedTests',
