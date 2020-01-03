@@ -96,6 +96,13 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy,
+    /**
+     * MAGENTO CUSTOMIZATION
+     * Allow cors on the dev server
+     */
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
         // This registers user provided middleware for proxy reasons

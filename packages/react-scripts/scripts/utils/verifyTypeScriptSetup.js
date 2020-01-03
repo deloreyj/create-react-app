@@ -253,10 +253,14 @@ function verifyTypeScriptSetup() {
   }
 
   // Reference `react-scripts` types
+  /**
+   * MAGENTO CUSTOMIZATION
+   * point the type declaration to the custom react-scripts dependency
+   */
   if (!fs.existsSync(paths.appTypeDeclarations)) {
     fs.writeFileSync(
       paths.appTypeDeclarations,
-      `/// <reference types="react-scripts" />${os.EOL}`
+      `/// <reference types="@mage-catfish/react-scripts" />${os.EOL}`
     );
   }
 }

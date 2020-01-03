@@ -168,8 +168,13 @@ module.exports = function(webpackEnv) {
       // the line below with these two lines if you prefer the stock client:
       // require.resolve('webpack-dev-server/client') + '?/',
       // require.resolve('webpack/hot/dev-server'),
+      /**
+       * MAGENTO CUSTOMIZATION
+       * Point webpack to our custom magewebpackHotDevClient that allows the socket to point at something
+       * other than window.location
+       */
       isEnvDevelopment &&
-        require.resolve('react-dev-utils/webpackHotDevClient'),
+        require.resolve('./mageWebpackHotDevClient'),
       // Finally, this is your app's code:
       paths.appIndexJs,
       // We include the app code last so that if there is a runtime error during
@@ -274,9 +279,13 @@ module.exports = function(webpackEnv) {
       // Automatically split vendor and commons
       // https://twitter.com/wSokra/status/969633336732905474
       // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+      /**
+       * MAGENTO CUSTOMIZATION
+       * Tell webpack to name chunks in development environment to fix the double save issue
+       */
       splitChunks: {
         chunks: 'all',
-        name: false,
+        name: isEnvDevelopment ? true : false,
       },
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985

@@ -126,7 +126,7 @@ module.exports = function(
   appPackage.scripts = Object.assign(
     {
       start: 'react-scripts start',
-      build: 'react-scripts build',
+      build: 'react-scripts build && node createUsefulAssetManifest.js',
       test: 'react-scripts test',
       eject: 'react-scripts eject',
     },
