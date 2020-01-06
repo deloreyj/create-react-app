@@ -12,17 +12,6 @@
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
-// MAGENTO-CUSTOMIZATION: React-Spectrum has some really weird build configuration requirements.
-// These variables must be set before is configured.
-//
-// See: https://git.corp.adobe.com/gist/kario/01883cfa1860f4ec7898c6ee8cd20d49.
-process.env.SCALE_MEDIUM = 'true';
-process.env.SCALE_LARGE = 'false';
-process.env.THEME_LIGHT = 'false';
-process.env.THEME_LIGHTEST = 'true';
-process.env.THEME_DARK = 'false';
-process.env.THEME_DARKEST = 'false';
-
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
@@ -195,7 +184,21 @@ function build(previousFileSizes) {
         });
       } else {
         messages = formatWebpackMessages(
-          stats.toJson({ all: false, warnings: true, errors: true })
+          stats.toJson({
+            all: false,
+            warnings: true,
+            errors: true,
+            /* MAGENTO CUSTOMIZATION: suppress css ordering warnings from react-spectrum */
+            warningsFilter: warning => {
+              if (
+                warning.includes('react-spectrum') &&
+                warning.includes('Conflicting order between')
+              ) {
+                return true;
+              }
+              return false;
+            },
+          })
         );
       }
       if (messages.errors.length) {
