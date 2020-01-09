@@ -188,16 +188,6 @@ function build(previousFileSizes) {
             all: false,
             warnings: true,
             errors: true,
-            /* MAGENTO CUSTOMIZATION: suppress css ordering warnings from react-spectrum */
-            warningsFilter: warning => {
-              if (
-                warning.includes('react-spectrum') &&
-                warning.includes('Conflicting order between')
-              ) {
-                return true;
-              }
-              return false;
-            },
           })
         );
       }

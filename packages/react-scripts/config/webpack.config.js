@@ -173,8 +173,7 @@ module.exports = function(webpackEnv) {
        * Point webpack to our custom magewebpackHotDevClient that allows the socket to point at something
        * other than window.location
        */
-      isEnvDevelopment &&
-        require.resolve('./mageWebpackHotDevClient'),
+      isEnvDevelopment && require.resolve('./mageWebpackHotDevClient'),
       // Finally, this is your app's code:
       paths.appIndexJs,
       // We include the app code last so that if there is a runtime error during
@@ -652,6 +651,8 @@ module.exports = function(webpackEnv) {
           // both options are optional
           filename: 'static/css/[name].[contenthash:8].css',
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+          /* MAGENTO CUSTOMIZATION - ignore css import error because we namespace our styles ourselves */
+          ignoreOrder: true,
         }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding
