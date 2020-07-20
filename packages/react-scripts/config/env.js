@@ -68,9 +68,23 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
 // injected into the application via DefinePlugin in webpack configuration.
 const REACT_APP = /^REACT_APP_/i;
 
+// MAGENTO-CUSTOMIZATION: Don't filter out spectrum environment variables.
+const spectrumEnvVars = [
+  'SCALE_MEDIUM',
+  'SCALE_LARGE',
+  'THEME_LIGHT',
+  'THEME_LIGHTEST',
+  'THEME_DARK',
+  'THEME_DARKEST',
+];
+
 function getClientEnvironment(publicUrl) {
   const raw = Object.keys(process.env)
-    .filter(key => REACT_APP.test(key))
+    .filter(
+      key =>
+        REACT_APP.test(key) /* MAGENTO-CUSTOMIZATION */ ||
+        spectrumEnvVars.includes(key)
+    )
     .reduce(
       (env, key) => {
         env[key] = process.env[key];

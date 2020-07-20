@@ -1,15 +1,15 @@
 {
-  "name": "cra-template",
+  "name": "@mage-catfish/cra-template",
   "version": "1.0.3",
   "keywords": [
     "react",
     "create-react-app",
     "template"
   ],
-  "description": "The base template for Create React App.",
+  "description": "The base template for @mage-catfish Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/create-react-app.git",
+    "url": "https://github.com/deloreyj/create-react-app.git",
     "directory": "packages/cra-template"
   },
   "license": "MIT",
@@ -17,7 +17,7 @@
     "node": ">=10"
   },
   "bugs": {
-    "url": "https://github.com/facebook/create-react-app/issues"
+    "url": "https://github.com/deloreyj/create-react-app/issues"
   },
   "files": [
     "template",
